@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listItems"
+        android:layout_width="match_parent"
+                android:layout_height="456dp"></ListView>
+
+    <TextView
+        android:id="@+id/popUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:text="Вы записались!"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Записаться" />
+
+</LinearLayout>

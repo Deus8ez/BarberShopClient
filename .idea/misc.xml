@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/drawable/action_photo.xml" value="0.2703125" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/drawable/ic_add.xml" value="0.2703125" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/drawable/ic_delete_black_24dp.xml" value="0.246875" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/drawable/ic_done.xml" value="0.2703125" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/drawable/ic_photo_camera_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/activity_item.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/activity_main.xml" value="0.223731884057971" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/add_item.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/listview_layout_item.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/my_list_item.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/layout/my_list_item_advanced.xml" value="0.140625" />
+        <entry key="..\:/Users/Darkhan/AndroidStudioProjects/lab2/app/src/main/res/menu/add_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/lab2/app/src/main/res/drawable/ic_add.xml" value="0.22135416666666666" />
+        <entry key="..\:/lab2/app/src/main/res/drawable/ic_delete_black_24dp.xml" value="0.22135416666666666" />
+        <entry key="..\:/lab2/app/src/main/res/drawable/ic_done.xml" value="0.22135416666666666" />
+        <entry key="..\:/lab2/app/src/main/res/layout/activity_barber.xml" value="0.4288939051918736" />
+        <entry key="..\:/lab2/app/src/main/res/layout/activity_date.xml" value="0.20520833333333333" />
+        <entry key="..\:/lab2/app/src/main/res/layout/activity_item.xml" value="0.25" />
+        <entry key="..\:/lab2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/lab2/app/src/main/res/layout/activity_service.xml" value="0.19791666666666666" />
+        <entry key="..\:/lab2/app/src/main/res/layout/barber_list_item.xml" value="0.25833333333333336" />
+        <entry key="..\:/lab2/app/src/main/res/layout/content_barber.xml" value="0.36666666666666664" />
+        <entry key="..\:/lab2/app/src/main/res/layout/my_list_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/lab2/app/src/main/res/layout/my_list_item_advanced.xml" value="0.25833333333333336" />
+        <entry key="..\:/lab2/app/src/main/res/layout/service_list_item.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
