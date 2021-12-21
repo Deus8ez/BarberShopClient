@@ -1,18 +1,25 @@
 package com.example.lab2
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.BitmapFactory
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 
 import android.widget.AdapterView.OnItemClickListener
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.lab2.models.Barber
 import com.example.lab2.models.Service
@@ -34,6 +41,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var barber: Barber
     private lateinit var service: Service
     private lateinit var date: String
+    lateinit var notificationManager: NotificationManager
+    val CHANNEL_ID = "channelID"
+    val CHANNEL_NAME = "channelName"
 
     private lateinit var con: SQLiteDatabase;
 
@@ -53,10 +63,8 @@ class MainActivity : AppCompatActivity() {
         barber = Barber(0, "", "")
         service = Service()
 
-
         var cursor = con.query("barber", arrayOf("barberId", "barberName"), null, null, null, null, null)
         cursor.moveToFirst()
-//        var icount: Int = cursor.getInt(0)
         if(cursor.getCount() > 0){
             while (!cursor.isAfterLast) {
                 barber.id = cursor.getInt(0)
@@ -67,7 +75,6 @@ class MainActivity : AppCompatActivity() {
 
         cursor = con.query("service", arrayOf("serviceId", "serviceName"), null, null, null, null, null)
         cursor.moveToFirst()
-//        icount = cursor.getInt(0)
         if(cursor.getCount() > 0){
             while (!cursor.isAfterLast) {
                 service.id = cursor.getInt(0)
@@ -112,7 +119,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         playButton.setOnClickListener {
-
             var userText = findViewById<EditText>(R.id.textView).text.toString()
 
             var reservationData = Reservation(barber.id, service.id, date, userText)
@@ -122,6 +128,13 @@ class MainActivity : AppCompatActivity() {
                     Log.w("success", "asd")
                     var popUp = findViewById<TextView>(R.id.popUp)
                     popUp.setVisibility(View.VISIBLE)
+
+                    NotificationHelper(this,"Вы записались!").Notification()
+                    val kh = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    kh.hideSoftInputFromWindow(currentFocus?.windowToken,0)
+                    /**ok set Text msg*/
+                    Toast.makeText(this,"is send",Toast.LENGTH_SHORT).show()
+
                 } else {
                     Log.w("Error", "error")
                 }
@@ -211,5 +224,43 @@ class RestApiService {
                 }
             }
         )
+    }
+}
+
+class NotificationHelper(var co:Context,var msg:String) {
+    private val CHANNEL_ID = "message id"
+    private val NOTIFICATION_ID=123
+
+    fun Notification(){
+        createNotificationChannel()
+        val senInt = Intent(co,MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingInt = PendingIntent.getActivities(co,0, arrayOf(senInt),0)
+        /**set notification Dialog*/
+        val icon = BitmapFactory.decodeResource(co.resources,R.drawable.ic_done)
+        val isnotification = NotificationCompat.Builder(co,CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_done)
+            .setLargeIcon(icon)
+            .setContentTitle("BarberShopApp")
+            .setContentText(msg)
+            .setContentIntent(pendingInt)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .build()
+        NotificationManagerCompat.from(co)
+            .notify(NOTIFICATION_ID,isnotification)
+    }
+
+    private fun createNotificationChannel(){
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            val name = CHANNEL_ID
+            val descrip = "Channel description"
+            val imports = NotificationManager.IMPORTANCE_DEFAULT
+            val cannels = NotificationChannel(CHANNEL_ID,name,imports).apply {
+                description = descrip
+            }
+            val notificationManger = co.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManger.createNotificationChannel(cannels)
+        }
     }
 }
